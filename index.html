@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adobe: Creative, marketing and document management solutions</title>
+    <style>
+        /* Base Reset & 2012 Web Font Styling */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+            background-color: #333333;
+            color: #333333;
+            font-size: 11px;
+            line-height: 1.4;
+        }
+        a {
+            color: #0066cc;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Page Container */
+        #wrapper {
+            width: 960px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            box-shadow: 0 0 10px rgba(0,0,0,0.5);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Global Header Header */
+        header {
+            background-color: #2b2b2b;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            border-bottom: 1px solid #1a1a1a;
+        }
+        .header-left {
+            display: flex;
+            align-items: center;
+            height: 100%;
+        }
+        .adobe-logo {
+            background-color: #ff0000;
+            height: 48px;
+            width: 38px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+        .adobe-logo svg {
+            width: 20px;
+            fill: #ffffff;
+        }
+        nav.main-nav {
+            display: flex;
+            height: 100%;
+        }
+        nav.main-nav button {
+            background: linear-gradient(to bottom, #3f3f3f 0%, #2b2b2b 100%);
+            border: none;
+            border-right: 1px solid #222222;
+            border-left: 1px solid #4a4a4a;
+            color: #cccccc;
+            padding: 0 16px;
+            font-size: 11px;
+            font-weight: bold;
+            cursor: pointer;
+            height: 100%;
+            display: flex;
+            align-items: center;
+        }
+        nav.main-nav button:hover, nav.main-nav button.active {
+            background: #111111;
+            color: #ffffff;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            padding-right: 10px;
+        }
+        .search-box {
+            position: relative;
+            margin-left: 10px;
+        }
+        .search-box input {
+            background-color: #1a1a1a;
+            border: 1px solid #444444;
+            color: #cccccc;
+            padding: 3px 22px 3px 6px;
+            font-size: 11px;
+            width: 140px;
+            border-radius: 2px;
+        }
+        .search-box span {
+            position: absolute;
+            right: 5px;
+            top: 4px;
+            color: #888;
+            font-size: 10px;
+        }
+
+        /* Sub-Header User Nav */
+        .user-nav-bar {
+            background-color: #e6e6e6;
+            border-bottom: 1px solid #cccccc;
+            padding: 4px 15px;
+            text-align: right;
+            font-size: 11px;
+            color: #444444;
+        }
+        .user-nav-bar a {
+            color: #0066cc;
+            margin: 0 4px;
+        }
+
+        /* Banner Hero (Home) */
+        .hero-home {
+            background-color: #000000;
+            height: 300px;
+            position: relative;
+            overflow: hidden;
+            background: radial-gradient(circle at 70% 50%, #1a052b 0%, #000000 70%);
+            border-bottom: 1px solid #cccccc;
+        }
+        .hero-graphics {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+        }
+        .hero-banner-img {
+            height: 100%;
+            object-fit: cover;
+        }
+        .hero-content-box {
+            position: absolute;
+            right: 20px;
+            bottom: 20px;
+            width: 480px;
+            background: rgba(0, 0, 0, 0.75);
+            padding: 16px;
+            border: 1px solid #444444;
+            color: #ffffff;
+        }
+        .hero-content-box h2 {
+            font-size: 14px;
+            font-weight: normal;
+            color: #cccccc;
+            margin-bottom: 4px;
+        }
+        .hero-content-box h1 {
+            font-size: 28px;
+            font-weight: normal;
+            color: #ffffff;
+            margin-bottom: 10px;
+        }
+        .hero-content-box p {
+            font-size: 11px;
+            color: #bbbbbb;
+            line-height: 1.5;
+            margin-bottom: 8px;
+        }
+        .hero-content-box a {
+            color: #4db8ff;
+        }
+
+        /* Content Area */
+        .main-content {
+            padding: 15px;
+            flex-grow: 1;
+        }
+
+        /* Grid Section (Home) */
+        .home-grid {
+            display: grid;
+            grid-template-columns: 300px 300px 310px;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        .grid-box {
+            border: 1px solid #e0e0e0;
+            background: #ffffff;
+        }
+        .grid-header {
+            background: linear-gradient(to bottom, #f0f0f0 0%, #e0e0e0 100%);
+            padding: 5px 8px;
+            font-weight: bold;
+            color: #333333;
+            border-bottom: 1px solid #cccccc;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .grid-header .more-btn {
+            background: #888888;
+            color: #ffffff;
+            font-size: 9px;
+            padding: 1px 5px;
+            border-radius: 2px;
+            font-weight: normal;
+        }
+        .grid-body {
+            padding: 10px;
+        }
+        .grid-body img {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+            margin-bottom: 8px;
+        }
+        .grid-body h3 {
+            font-size: 11px;
+            color: #0066cc;
+            margin-bottom: 4px;
+        }
+        .grid-body p {
+            font-size: 10px;
+            color: #666666;
+            margin-bottom: 6px;
+        }
+
+        /* Downloads List Box (Home) */
+        .download-links-list {
+            list-style: none;
+        }
+        .download-links-list li {
+            padding: 6px 0;
+            border-bottom: 1px solid #eeeeee;
+            display: flex;
+            align-items: center;
+            font-weight: bold;
+            font-size: 11px;
+            cursor: pointer;
+        }
+        .download-links-list li:hover {
+            background-color: #f9f9f9;
+        }
+        .download-links-list li svg {
+            margin-right: 8px;
+            width: 16px;
+            height: 16px;
+        }
+
+        /* Sub Page Headers */
+        .page-header-bar {
+            background-color: #2b2b2b;
+            color: #ffffff;
+            padding: 12px 15px;
+            margin: -15px -15px 15px -15px;
+        }
+        .page-header-bar span.breadcrumb {
+            color: #aaaaaa;
+            font-size: 10px;
+            display: block;
+            margin-bottom: 4px;
+        }
+        .page-header-bar h1 {
+            font-size: 22px;
+            font-weight: normal;
+        }
+
+        /* Sign In Page */
+        .signin-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            max-width: 750px;
+            margin: 20px auto;
+        }
+        .signin-box {
+            background: #f7f7f7;
+            border: 1px solid #dddddd;
+            padding: 20px;
+            border-radius: 3px;
+        }
+        .signin-box h2 {
+            font-size: 14px;
+            color: #333;
+            margin-bottom: 12px;
+        }
+        .yellow-btn {
+            background: linear-gradient(to bottom, #fce081 0%, #cba135 100%);
+            border: 1px solid #a37f22;
+            color: #111111;
+            padding: 5px 15px;
+            font-weight: bold;
+            font-size: 11px;
+            border-radius: 2px;
+            cursor: pointer;
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.5);
+        }
+        .yellow-btn:hover {
+            background: linear-gradient(to bottom, #fce592 0%, #d8ac3b 100%);
+        }
+        .form-group {
+            margin-bottom: 12px;
+        }
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 4px;
+        }
+        .form-group input[type="text"], .form-group input[type="password"] {
+            width: 100%;
+            padding: 4px;
+            border: 1px solid #aaaaaa;
+        }
+
+        /* Downloads Page Layout */
+        .downloads-grid {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 25px;
+        }
+        .product-dl-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 10px;
+        }
+        .product-dl-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+        .product-dl-item img {
+            width: 48px;
+            height: 48px;
+            border-radius: 2px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+            flex-shrink: 0;
+        }
+        .product-dl-item .info h3 {
+            font-size: 11px;
+            color: #0066cc;
+        }
+        .product-dl-item .info span {
+            color: #666666;
+            font-size: 10px;
+            display: block;
+        }
+
+        /* Readers & Players Badges Sidebar */
+        .sidebar-section-title {
+            font-size: 11px;
+            font-weight: bold;
+            color: #333333;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            border-bottom: 1px solid #dddddd;
+            padding-bottom: 3px;
+        }
+        .badge-buttons-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+        .dl-badge-btn {
+            background: linear-gradient(to bottom, #ffffff 0%, #eaeaea 100%);
+            border: 1px solid #b5b5b5;
+            border-radius: 3px;
+            padding: 4px 6px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+        }
+        .dl-badge-btn:hover {
+            border-color: #888888;
+            background: #ffffff;
+        }
+        .dl-badge-btn .badge-left {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .dl-badge-btn .badge-text {
+            font-size: 9px;
+            font-weight: bold;
+            color: #333333;
+            line-height: 1.1;
+        }
+        .dl-badge-btn .badge-text span {
+            display: block;
+            font-style: italic;
+            font-weight: normal;
+            color: #666;
+        }
+        .dl-badge-btn .arrow-down {
+            color: #888888;
+            font-size: 10px;
+        }
+
+        /* Flash Player Specific Page */
+        .flash-dl-card {
+            display: flex;
+            gap: 20px;
+            padding: 15px 0;
+        }
+        .flash-big-icon {
+            width: 110px;
+            height: 110px;
+            background: #cc0000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 4px;
+            flex-shrink: 0;
+        }
+        .flash-big-icon span {
+            color: #ffffff;
+            font-size: 70px;
+            font-family: "Georgia", serif;
+            font-style: italic;
+            font-weight: bold;
+        }
+        .flash-details h2 {
+            font-size: 16px;
+            font-weight: normal;
+            margin-bottom: 8px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #404040;
+            color: #cccccc;
+            padding: 20px 15px;
+            margin-top: auto;
+            border-top: 1px solid #222222;
+        }
+        .footer-cols {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        .footer-col h4 {
+            color: #ffffff;
+            font-size: 11px;
+            margin-bottom: 8px;
+        }
+        .footer-col ul {
+            list-style: none;
+        }
+        .footer-col ul li {
+            margin-bottom: 4px;
+        }
+        .footer-col ul li a {
+            color: #aaaaaa;
+            font-size: 10px;
+        }
+        .footer-bottom {
+            border-top: 1px solid #555555;
+            padding-top: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 10px;
+            color: #aaaaaa;
+        }
+        .truste-badge {
+            background: #ffffff;
+            color: #000;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 9px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        /* Hide views */
+        .view-page {
+            display: none;
+        }
+        .view-page.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+<div id="wrapper">
+    <!-- Header -->
+    <header>
+        <div class="header-left">
+            <div class="adobe-logo" onclick="switchView('home')">
+                <svg viewBox="0 0 30 30">
+                    <polygon points="0,0 12,0 0,30"/>
+                    <polygon points="18,0 30,0 30,30"/>
+                    <polygon points="11.5,13 18.5,13 30,30 22,30 18,20 12,20"/>
+                </svg>
+            </div>
+            <nav class="main-nav">
+                <button onclick="switchView('downloads')">Products</button>
+                <button onclick="switchView('home')">Solutions</button>
+                <button onclick="switchView('home')">Learning</button>
+                <button onclick="switchView('home')">Help</button>
+                <button onclick="switchView('downloads')">Downloads</button>
+                <button onclick="switchView('home')">Company</button>
+                <button onclick="switchView('cart')">Buy</button>
+            </nav>
+        </div>
+        <div class="header-right">
+            <div class="search-box">
+                <input type="text" placeholder="Search">
+                <span>🔍</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Sub Header Bar -->
+    <div class="user-nav-bar">
+        <a href="#" onclick="switchView('home')">My Adobe</a> | 
+        <a href="#" onclick="switchView('cart')">My orders</a> | 
+        <a href="#" onclick="switchView('cart')">🛒 My cart ( <span id="cart-count">0</span> )</a> | 
+        <a href="#" onclick="switchView('signin')">Sign in</a>
+    </div>
+
+    <!-- VIEW 1: HOME PAGE -->
+    <div id="view-home" class="view-page active">
+        <!-- Hero Banner -->
+        <div class="hero-home">
+            <div class="hero-graphics">
+                <svg width="100%" height="100%" viewBox="0 0 960 300" preserveAspectRatio="none">
+                    <defs>
+                        <linearGradient id="bg-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#050b14"/>
+                            <stop offset="50%" stop-color="#2a083b"/>
+                            <stop offset="100%" stop-color="#000000"/>
+                        </linearGradient>
+                    </defs>
+                    <rect width="960" height="300" fill="url(#bg-grad)"/>
+                    <circle cx="250" cy="150" r="130" fill="#e55322" opacity="0.4"/>
+                    <circle cx="350" cy="120" r="90" fill="#2b82c5" opacity="0.5"/>
+                </svg>
+            </div>
+            <div class="hero-content-box">
+                <h2>Now available: Adobe Photoshop CS6 Extended</h2>
+                <h1>Make some magic</h1>
+                <p>Retouch images using new Content-Aware tools. Intuitively create movies and rich graphics. Edit at blazingly fast speeds. A magical application, Photoshop CS6 Extended is up to new tricks. <a href="#" onclick="switchView('downloads')">Learn more ›</a></p>
+            </div>
+        </div>
+
+        <!-- 3-Column Home Content -->
+        <div class="main-content">
+            <div class="home-grid">
+                <!-- Box 1 -->
+                <div class="grid-box">
+                    <div class="grid-header">
+                        <span>Education</span>
+                        <span class="more-btn">More</span>
+                    </div>
+                    <div class="grid-body">
+                        <div style="background:#ddd; height:110px; margin-bottom:8px; display:flex; align-items:center; justify-content:center; color:#666;">[ Education Banner ]</div>
+                        <h3>Prepare the next generation for success</h3>
+                        <p>Give students the skills to express and share ideas in compelling and engaging ways.</p>
+                        <a href="#">Learn more ›</a>
+                    </div>
+                </div>
+
+                <!-- Box 2 -->
+                <div class="grid-box">
+                    <div class="grid-header">
+                        <span>Solutions</span>
+                        <span class="more-btn">More</span>
+                    </div>
+                    <div class="grid-body">
+                        <div style="background:#333; height:110px; margin-bottom:8px; display:flex; align-items:center; justify-content:center; color:#fff;">[ Digital Publishing ]</div>
+                        <h3>Digital Publishing Suite & Vanity Fair</h3>
+                        <p>Celebrated print magazine grows its fan base with captivating new tablet edition.</p>
+                        <a href="#">Learn more ›</a>
+                    </div>
+                </div>
+
+                <!-- Downloads Column -->
+                <div class="grid-box">
+                    <div class="grid-header">
+                        <span>Download</span>
+                        <span class="more-btn">More</span>
+                    </div>
+                    <div class="grid-body" style="padding: 0 10px;">
+                        <ul class="download-links-list">
+                            <li onclick="switchView('downloads')">
+                                <span style="color:#cc0000;">📄</span> Adobe Reader
+                            </li>
+                            <li onclick="switchView('flash')">
+                                <span style="color:#cc0000;">ƒ</span> Adobe Flash Player
+                            </li>
+                            <li onclick="switchView('downloads')">
+                                <span style="color:#0066cc;">☁</span> Adobe AIR
+                            </li>
+                            <li onclick="switchView('downloads')">
+                                <span style="color:#e55322;">|||</span> Adobe Shockwave Player
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- VIEW 2: SIGN IN -->
+    <div id="view-signin" class="view-page">
+        <div class="page-header-bar">
+            <span class="breadcrumb">Home /</span>
+            <h1>Sign In</h1>
+        </div>
+        <div class="main-content">
+            <div class="signin-container">
+                <div class="signin-box">
+                    <h2>New to Adobe?</h2>
+                    <button class="yellow-btn" style="width: 100%; margin-bottom: 12px;">Create an Adobe Account</button>
+                    <p><strong>It's free and only takes a minute</strong></p>
+                    <p style="margin-top: 6px; color: #555;">Get complete access to:</p>
+                    <ul style="margin-left: 18px; margin-top: 6px; color: #555; line-height: 1.6;">
+                        <li>Free trial downloads</li>
+                        <li>Hundreds of free product extensions</li>
+                        <li>Community areas</li>
+                        <li>Members-only white papers</li>
+                    </ul>
+                </div>
+
+                <div class="signin-box">
+                    <h2>Returning members sign in</h2>
+                    <form onsubmit="event.preventDefault(); switchView('home');">
+                        <div class="form-group">
+                            <label>Adobe ID (Usually your email address)</label>
+                            <input type="text" required value="user@example.com">
+                        </div>
+                        <div class="form-group">
+                            <label>Password</label>
+                            <input type="password" required value="••••••••">
+                        </div>
+                        <div class="form-group">
+                            <label><input type="checkbox"> Remember me</label>
+                        </div>
+                        <button type="submit" class="yellow-btn">Sign in</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- VIEW 3: DOWNLOADS PAGE -->
+    <div id="view-downloads" class="view-page">
+        <div class="page-header-bar">
+            <span class="breadcrumb">Home /</span>
+            <h1>Downloads</h1>
+        </div>
+        <div class="main-content">
+            <div class="downloads-grid">
+                <div>
+                    <h2 style="font-size:13px; margin-bottom:12px;">Featured product downloads</h2>
+                    <div class="product-dl-grid">
+                        <div class="product-dl-item">
+                            <div style="width:48px; height:48px; background:#1a1a1a; color:#fff; display:flex; align-items:center; justify-content:center; font-weight:bold;">CS6</div>
+                            <div class="info">
+                                <h3>Adobe® Creative Suite® CS6 Design & Web Premium</h3>
+                                <span>Trial version</span>
+                            </div>
+                        </div>
+                        <div class="product-dl-item">
+                            <div style="width:48px; height:48px; background:#003366; color:#4db8ff; display:flex; align-items:center; justify-content:center; font-weight:bold;">Ps</div>
+                            <div class="info">
+                                <h3>Adobe Photoshop® CS6 Extended</h3>
+                                <span>Trial version</span>
+                            </div>
+                        </div>
+                        <div class="product-dl-item">
+                            <div style="width:48px; height:48px; background:#330033; color:#ff66cc; display:flex; align-items:center; justify-content:center; font-weight:bold;">Id</div>
+                            <div class="info">
+                                <h3>Adobe InDesign® CS6</h3>
+                                <span>Trial version</span>
+                            </div>
+                        </div>
+                        <div class="product-dl-item">
+                            <div style="width:48px; height:48px; background:#003300; color:#66ff66; display:flex; align-items:center; justify-content:center; font-weight:bold;">Dw</div>
+                            <div class="info">
+                                <h3>Adobe Dreamweaver® CS6</h3>
+                                <span>Trial version</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sidebar Badges -->
+                <div>
+                    <div class="sidebar-section-title">Readers and Players</div>
+                    <div class="badge-buttons-grid">
+                        <div class="dl-badge-btn" onclick="switchView('downloads')">
+                            <div class="badge-left">
+                                <span style="color:#cc0000; font-weight:bold;">📄</span>
+                                <div class="badge-text">Get<span>ADOBE® READER®</span></div>
+                            </div>
+                            <span class="arrow-down">▼</span>
+                        </div>
+                        <div class="dl-badge-btn" onclick="switchView('flash')">
+                            <div class="badge-left">
+                                <span style="color:#cc0000; font-weight:bold;">ƒ</span>
+                                <div class="badge-text">Get<span>FLASH® PLAYER</span></div>
+                            </div>
+                            <span class="arrow-down">▼</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- VIEW 4: FLASH PLAYER DOWNLOAD PAGE -->
+    <div id="view-flash" class="view-page">
+        <div class="page-header-bar">
+            <span class="breadcrumb">Home / Downloads / Adobe Flash Player /</span>
+            <h1>Adobe Flash Player</h1>
+        </div>
+        <div class="main-content">
+            <div class="flash-dl-card">
+                <div class="flash-big-icon">
+                    <span>f</span>
+                </div>
+                <div class="flash-details">
+                    <h2>Adobe Flash Player 11.2.202.235 <span style="color:#666; font-size:12px;">(4.3 MB)</span></h2>
+                    <p style="margin-bottom: 10px;"><strong>Your system:</strong> Linux 32-bit, English</p>
+                    <p style="margin-bottom: 15px; color:#666;">By clicking the Download now button, you acknowledge that you have read and agree to the Adobe Software Licensing Agreement.</p>
+                    <button class="yellow-btn" style="padding: 8px 20px; font-size: 12px;" onclick="addToCart()">Download now</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- VIEW 5: MY CART -->
+    <div id="view-cart" class="view-page">
+        <div class="page-header-bar">
+            <h1>My cart</h1>
+        </div>
+        <div class="main-content">
+            <p style="font-size: 13px; margin-bottom: 15px;">You have <strong id="cart-items-text">0</strong> items in your cart.</p>
+            <button class="yellow-btn" onclick="switchView('downloads')">Continue shopping</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-cols">
+            <div class="footer-col">
+                <h4>Products</h4>
+                <ul>
+                    <li><a href="#">Acrobat</a></li>
+                    <li><a href="#">Creative Cloud</a></li>
+                    <li><a href="#">Creative Suite</a></li>
+                    <li><a href="#">Photoshop</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Solutions</h4>
+                <ul>
+                    <li><a href="#">Digital marketing</a></li>
+                    <li><a href="#">Digital media</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Help</h4>
+                <ul>
+                    <li><a href="#">Product help centers</a></li>
+                    <li><a href="#">Orders and returns</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Ways to buy</h4>
+                <ul>
+                    <li><a href="#">For personal and home</a></li>
+                    <li><a href="#">Special offers</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="#">News room</a></li>
+                    <li><a href="#">Careers</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div>Copyright © 2012 Adobe Systems Incorporated. All rights reserved.</div>
+            <div class="truste-badge">TRUSTe EU SAFE HARBOR</div>
+        </div>
+    </footer>
+</div>
+
+<script>
+    let cartCount = 0;
+
+    function switchView(viewId) {
+        const pages = document.querySelectorAll('.view-page');
+        pages.forEach(page => page.classList.remove('active'));
+
+        const target = document.getElementById('view-' + viewId);
+        if (target) {
+            target.classList.add('active');
+        }
+        window.scrollTo(0, 0);
+    }
+
+    function addToCart() {
+        cartCount++;
+        document.getElementById('cart-count').innerText = cartCount;
+        document.getElementById('cart-items-text').innerText = cartCount;
+        alert('Item added to cart!');
+    }
+</script>
+</body>
+</html>
